@@ -6,6 +6,7 @@ const timeout = 60;
 const pubsubRepository = require("../repositories/pub-sub-repo");
 const { listenForPullMessages } = pubsubRepository;
 
+listenForPullMessages(pubSubClient, subscriptionName, 99999);
 
 module.exports = {
     notificationsHome: (req, res) => {
@@ -17,7 +18,7 @@ module.exports = {
 
     pullNotification: (req, res) => {
         try {
-            listenForPullMessages(pubSubClient, subscriptionName, timeout);            
+            listenForPullMessages(pubSubClient, subscriptionName, timeout);
         } catch (error) {
             return res.status(500).json({
                 success: false,

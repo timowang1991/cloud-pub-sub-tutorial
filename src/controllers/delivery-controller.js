@@ -5,6 +5,8 @@ const timeout = 60;
 const pubsubRepository = require("../repositories/pub-sub-repo");
 const { listenForPullMessages } = pubsubRepository;
 
+listenForPullMessages(pubSubClient, subscriptionName, 99999);
+
 module.exports = {
     deliveryHome: (req, res) => {
         return res.status(200).json({

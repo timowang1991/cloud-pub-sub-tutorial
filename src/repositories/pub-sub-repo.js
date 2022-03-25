@@ -14,7 +14,7 @@ module.exports = {
         const messageHandler = message => {
             console.log(`Received message ${message.id}:`);
             console.log(`\tData: ${message.data}`);
-            console.log(`\tAttributes: ${message.attributes}`);
+            console.log(`\tAttributes: ${JSON.stringify(message.attributes, null, 4)}`);
             messageCount += 1;
 
             message.ack();
