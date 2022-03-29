@@ -1,8 +1,8 @@
 module.exports = {
-    publishMessage: async (pubSubClient, topicName, payload) => {
+    publishMessage: async (pubSubClient, topicName, payload, attributes) => {
         const dataBuffer = Buffer.from(JSON.stringify(payload));
 
-        const messageId = await pubSubClient.topic(topicName).publish(dataBuffer);
+        const messageId = await pubSubClient.topic(topicName).publish(dataBuffer, attributes);
         console.log(`Message ${messageId} published.`);
         return messageId;
     },

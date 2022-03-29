@@ -16,8 +16,8 @@ module.exports = {
     },
 
     createOrders: async (req, res) => {
-        let ordersObj = req.body;
-        let messageId = await publishMessage(pubSubClient, topicName, ordersObj);
+        let { data, attributes } = req.body;
+        let messageId = await publishMessage(pubSubClient, topicName, data, attributes);
         return res.status(200).json({
             success: true,
             message: `Message ${messageId} published `
